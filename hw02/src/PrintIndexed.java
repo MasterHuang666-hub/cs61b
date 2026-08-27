@@ -4,11 +4,16 @@ public class PrintIndexed {
      * Example: printIndexed("hello") -> h4e3l2l1o0
      */
    public static void printIndexed(String s) {
-      // TODO: Fill in this function
+      for (int i=0;i<s.length();i++){
+         IO.print(s.charAt(i));
+         IO.print(s.length()-i-1);
+      }
+
    }
 
    public static void main(String[] args) {
       printIndexed("hello");
+      IO.println();
       printIndexed("cat"); // should print c2a1t0
    }
 }
