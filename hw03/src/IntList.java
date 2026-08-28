@@ -2,9 +2,18 @@ public class IntList {
     int first;
     IntList rest;
 
+    @Override
+    public String toString() {
+        if (rest == null) {
+            return String.valueOf(first);
+        }
+
+        return first + " -> " + rest;
+    }
+
     public IntList(int f, IntList r) {
-        first = f;
-        rest = r;
+        this.first = f;
+        this.rest = r;
     }
 
     /** Return the size of the list using... recursion! */
@@ -40,8 +49,13 @@ public class IntList {
      * You are not allowed to use "new" in this method.
      */
     public static IntList incrRecursiveDestructive(IntList L, int x) {
-        // TODO: Fill in this code
-        return null;
+        if (L.size()==1){
+             L.first+=x;
+             return L;
+        }
+        L.first+=x;
+        L.rest=incrRecursiveDestructive(L.rest,x);
+        return L;
     }
 
     /*
@@ -74,4 +88,14 @@ public class IntList {
     public void addFirst(int x) {
         // Optional: Fill in this code
     }
+    public static void main(){
+        IntList L = new IntList(5, null);
+        L.rest = new IntList(7, null);
+        L.rest.rest = new IntList(9, null);
+        IntList M = IntList.incrRecursiveDestructive(L, 3);
+        IO.println(L);
+        IO.println(M);
+    }
+
 }
+
